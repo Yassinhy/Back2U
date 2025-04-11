@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+
+    <div class="flex-container">
+        <div class="choice-box" id = "lost_choice">Lost</div>
+        <div class="choice-box" id = "found_choice">Found</div>
+    </div>
+
+    <script>
+
+        document.body.style.overflow = 'hidden';
+
+        document.getElementById("lost_choice").addEventListener("click", function(){
+            window.location.href = "/";
+        });
+        document.getElementById("found_choice").addEventListener("click", function(){
+            window.location.href = "/found";
+        });
+
+    </script>
+
+{% endblock %}

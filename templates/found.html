@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Found
+{% endblock %}
+
+{% block main %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.Title.label }}
+        {{ form.Title }}
+        {% for error in form.Title.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.photo.label }}
+        {{ form.photo }}
+        {% for error in form.photo.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.location.label }}
+        {{ form.location }}
+        {% for error in form.location.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.description.label }}
+        {{ form.description }}
+        {% for error in form.description.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.question1.label }}
+        {{ form.question1 }}
+        {% for error in form.question1.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.question2.label }}
+        {{ form.question2 }}
+        {% for error in form.question2.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.question3.label }}
+        {{ form.question3 }}
+        {% for error in form.question3.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    <button type="submit">Upload</button>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+
+<div class = "container"  id = "logging_page" style = "margin-top: 0px">
+
+    <div id = "register_choice">
+        <h1 style = "color: white; text-align: center;">Already have an account?</h1>
+        <br>
+        <a href="/login" class="btn btn-primary active sign" style="margin-top: 100px; background-color: white; border-color: white; color: red;">Sign In</a>
+
+
+    </div>
+
+    <div  id = "inside_logging_page">
+        <p class="heading_title">Sign Up</p>
+
+        <form method = "post" id = "sign_in_form">
+            <div>
+                <input placeholder = " " class = "Email_input" name = "email" autocomplete ="off">
+                <div class = "labelline">Enter email</div>
+            </div>
+            <div style = "position: relative; bottom: 20px">
+                <input placeholder = " " class = "Email_input" name = "password" autocomplete ="off">
+                <div class = "labelline" style = "max-width: 135px">Enter password</div>
+            </div>
+            <div style = "position: relative; bottom: 35px">
+                <input placeholder = " " class = "Email_input" name = "confirmation" autocomplete ="off">
+                <div class = "labelline" style = "max-width: 155px;">Confirm password</div>
+            </div>
+            <button type = "submit" style = "background-color: red; border-color: red; margin-top: 30px" class = "btn btn-primary active sign">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
