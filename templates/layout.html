@@ -17,28 +17,29 @@
 </head>
 <body>
     <!--Make a navigation bar!!!-->
-    <header>
+    
         {%if session['user_id'] %}
-        <a href = "/choice"><img src = "/static/images/logo_black.png" class = "logo"></a>
-        <nav class = "barnav">
-            <ul class = "nav__links">
-                <li><a href = "/">Lost Items</a></li>
-                <li><a href = "/found">Found Item</a></li>
-                <li><a href = "/logout">Sign Out</a></li>
-            </ul>
-        </nav>
+        <header class="my_header">
+            <a href = "/choice"><img src = "/static/images/logo_black.png" class = "logo"></a>
+            <nav class = "barnav">
+                <ul class = "nav__links" style="padding-right: 10; padding-left: 0px;">
+                    <li><a href = "/my_uploads" title="my uploads"><img src = "/static/images/uploads_icon.png" style = "width: 50px; margin-right: 20px"></a></li>
+                    <li><a href = "/logout" title="sign out"><img src = "/static/images/signout.png" style = "width: 40px; margin-left: 0px"></a></li>
+                </ul>
+            </nav>
+        </header>
         {%else %}
-        <a href = "/choice"><img src = "/static/images/logo_black.png" class = "logo" style = "max-width: 200px"></a>
-        <nav class = "barnav">
-            <ul class = "nav__links">
-                <li><a href = "/register">Register</a></li>
-                <li><a href = "/logout">Sign Out</a></li>
-            </ul>
-        </nav>
-
+        <header style="display: flex; justify-content: center; padding-bottom: 3%;">
+            <img src = "/static/images/logo_black.png" class = "logo" style="width: 140px;">
+        </header>
         {%endif%}
-    </header>
-
+        {% if get_flashed_messages() %}
+                    
+            <div class="alert alert-primary mb-0 text-center" style="margin-bottom: 50px;" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+                    
+        {% endif %}
     {% block main %}
 
     {% endblock %}

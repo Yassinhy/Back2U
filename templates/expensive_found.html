@@ -9,7 +9,7 @@
 <style>
     body {
     font-family: system-ui, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #939393;
     margin: 0;
     padding: 0;
 }
@@ -87,13 +87,13 @@ ul {
 
 </style>
 
-<!-- <div class="container my-4 text-center">
-    <a  href = "/expensive_found" title="expensive_findings">
+<div class="container my-4 text-center">
+    <a  href = "/found" title="normal_findings">
         <button id="toggleButton" class="btn btn-primary btn-animate" style="background-color: black; border-color: black; height: 60px;">
-            Is the item money, gold or silver
+            Go Back
         </button>
     </a>
-</div> -->
+</div>
 
 <form method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
@@ -115,10 +115,10 @@ ul {
     </div>
 
     <div>
-        <label>Add a filter to your image:</label>
+        <label>Filters:</label>
         <select name="filter">
             <option value="None">No Filter</option>
-            <option value="Grey_Scale">Greyscale</option>
+            <option value="Grey_Scale">Grey Scale</option>
             <option value="Weak_Blur">Weak Blur</option>
             <option value="Strong_Blur">Strong Blur</option>
         </select>

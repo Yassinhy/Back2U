@@ -5,60 +5,61 @@
 {% endblock %}
 
 {% block main %}
+
 <div class = "itemm-div">
     <img src = "static/uploads/{{info[0]['picture']}}" class = "itemm_img">
-    <!------------------------------------------------Below is the description items------------------------------------------------------>
+    
     <div class = "description-itemm">
         <h1 style = "font-weight: bold;"> {{info[0]['title']}} </h1>
 
-        <table>
-        <tr>
+        <table class="table table-light table-striped table-hover qtable">
+        <tr style="display: flex; flex-direction: column;">
                 <td> <h3> Location found at: </h3> </td>
-                <td> <h1 style = "font-weight: bold;"> {{info[0]['location']}} </h1> </td>
+                <td style="text-align: center;"> <h1 style = "font-weight: bold; font-size: large;"> {{info[0]['location']}} </h1> </td>
         </tr>
         </table>
 
         <p> {{info[0]['description']}} </p>
         <hr>
-        <form class = "container" style = "border-radius: 20px; border: 1px solid #ccc;">
-            <table class = "table table-dark table-striped table-hover" style = "border-radius: 20px">
-                    {%if info[0]["question3"] or info[0]["question1"] or info[0]["question2"]%}
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <h1>Questions</h1>
-                        </td>
-                    </tr>
-                    {%endif%}
-                    {%if info[0]["question1"] %}
-                    <tr>
-                        <td> <h3>{{info[0]["question1"]}}</h3> </td>
-                        <td> <input name = Q1></input> </td>
-                    </tr>
-                    {%endif%}
-
-                    {%if info[0]["question2"] %}
-                    <tr>
-                        <td> <h3>{{info[0]["question2"]}}</h3> </td>
-                        <td> <input name = Q2></input> </td>
-                    </tr>
-                    {%endif%}
-
-                    {%if info[0]["question3"] %}
-                    <tr>
-                        <td> <h3>{{info[0]["question3"]}}</h3> </td>
-                        <td> <input name = Q3></input> </td>
-                    </tr>
-                    {%endif%}
-                    {%if info[0]["question3"] or info[0]["question1"] or info[0]["question2"]%}
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <button class="btn btn-outline-secondary" type="submit" style = "color: white; font-size: 22px; width: 200px">Submit</button>
-                        </td>
-                    </tr>
-                    {%endif%}
-
-        </table>
-        </form>
+        <form method="post" class="itemm_form style" style="width: 100%;">
+            <table class="table table-dark table-striped table-hover qtable">
+                {% if info[0]["question1"] or info[0]["question2"] or info[0]["question3"] %}
+                <tr>
+                    <td colspan="2" class="text-center py-3">
+                        <h2 style="font-weight: bold;">Questions</h2>
+                    </td>
+                </tr>
+                {% endif %}
+        
+                {% if info[0]["question1"] %}
+                <tr class="itemm_q">
+                    <td><label for="Q1"><h4>{{ info[0]["question1"] }}</h4></label></td>
+                    <td><input type="text" name="Q1" class="form-control" placeholder="Your answer..."></td>
+                </tr>
+                {% endif %}
+        
+                {% if info[0]["question2"] %}
+                <tr class="itemm_q">
+                    <td><label for="Q2"><h4>{{ info[0]["question2"] }}</h4></label></td>
+                    <td><input type="text" name="Q2" class="form-control" placeholder="Your answer..."></td>
+                </tr>
+                {% endif %}
+        
+                {% if info[0]["question3"] %}
+                <tr class="itemm_q">
+                    <td><label for="Q3"><h4>{{ info[0]["question3"] }}</h4></label></td>
+                    <td> <input type="text" name="Q3" class="form-control" placeholder="Your answer..."></td>
+                </tr>
+                {%endif%}
+                {% if info[0]["question1"] or info[0]["question2"] or info[0]["question3"] %}
+                <tr>
+                    <td colspan="2" class="text-center py-3">
+                        <button class="btn btn-outline-light" type="submit" style="font-size: 20px; width: 180px;">Submit</button>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </form>        
     </div>
 </div>
 

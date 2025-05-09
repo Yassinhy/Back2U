@@ -35,11 +35,12 @@ def check_pass(string):
         return False
 
 ##################################################################################################################################################
-
-def save_item(photo, Title, Sdesc, Ldesc, user_id):
-    original_filename = secure_filename(photo.file_name)
-    unique_filename = f"{uuid.uuid4().hex}_{original_filename}"
-    photos.save(photo, name = unique_filename)
-    db.execute("INSERT INTO ITEMS (user_id, picture, title, short_description, description) VALUES (?, ?, ?, ?, ?)",
-                                   user_id, unique_filename, Title, Sdesc, Ldesc)
-
+def gradient_color(score):
+    score = max(0, min(100, score))
+    if score <= 50:
+        red = 255
+        green = int(255 * (score / 50))  # 0 → 255
+    else:
+        red = int(255 * ((100 - score) / 50))  # 255 → 0
+        green = 255
+    return f"#{red:02X}{green:02X}00"
