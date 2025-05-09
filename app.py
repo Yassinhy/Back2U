@@ -19,7 +19,7 @@ from PIL import Image, ImageFilter
 import uuid
 from google import genai
 import json
-client = genai.Client(api_key="AIzaSyDqLj2IGHm4MTpyeyDVrTtFxSyZZgNPuYU")
+client = genai.Client(api_key="APIKEY")
 
 
 
