@@ -26,7 +26,7 @@ from PIL import Image, ImageFilter
 import uuid
 from google import genai
 import json
-client = genai.Client(api_key="APIKEY")
+client = genai.Client(api_key="INSERT_API_KEY_HERE")
 
 
 
@@ -421,7 +421,7 @@ def view():
         q2 = request.form.get("Q2")
         q3 = request.form.get("Q3")
 
-        raw_response = evaluate_answers_weighted_bonus(row[0]["title"] ,row[0]["question1"], row[0]["question2"], row[0]["question3"], row[0]["answer1"], row[0]["answer2"], row[0]["answer3"], q1, q2, q3, "gemini-1.5-flash-latest")
+        raw_response = evaluate_answers_weighted_bonus(row[0]["title"] ,row[0]["question1"], row[0]["question2"], row[0]["question3"], row[0]["answer1"], row[0]["answer2"], row[0]["answer3"], q1, q2, q3, "gemini-3.5-flash-lite")
         phone_num = db.execute("SELECT phone_number FROM users WHERE id = ?", session["user_id"])
         response = json.loads(raw_response)
         score = response["final_score"]
