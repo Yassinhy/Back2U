@@ -1,5 +1,4 @@
 __pycache__/
 *.pyc
-database.db
 flask_session/
 .env

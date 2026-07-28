@@ -14,8 +14,15 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileAllowed
+
+import werkzeug
+from werkzeug.datastructures import FileStorage
+werkzeug.secure_filename = secure_filename  # shim: flask_uploads expects these on werkzeug directly
+werkzeug.FileStorage = FileStorage
+
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from PIL import Image, ImageFilter
+
 import uuid
 from google import genai
 import json
