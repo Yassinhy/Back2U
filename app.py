@@ -208,7 +208,6 @@ def after_request(response):
 def index():
     items = db.execute("SELECT * FROM items WHERE user_id != ?", session["user_id"])
     
-
     return render_template("index.html", items = items)
 
 
@@ -322,6 +321,7 @@ def found():
                    user_id, unique_filename, Title, location, description, question1, question2, question3, answer1, answer2, answer3)
 
         flash("Item Uploaded successfully")
+        redirect("/")
 
 
 
@@ -414,7 +414,7 @@ def view():
         q2 = request.form.get("Q2")
         q3 = request.form.get("Q3")
 
-        raw_response = evaluate_answers_weighted_bonus(row[0]["title"] ,row[0]["question1"], row[0]["question2"], row[0]["question3"], row[0]["answer1"], row[0]["answer2"], row[0]["answer3"], q1, q2, q3, "gemini-1.5-pro-latest")
+        raw_response = evaluate_answers_weighted_bonus(row[0]["title"] ,row[0]["question1"], row[0]["question2"], row[0]["question3"], row[0]["answer1"], row[0]["answer2"], row[0]["answer3"], q1, q2, q3, "gemini-1.5-flash-latest")
         phone_num = db.execute("SELECT phone_number FROM users WHERE id = ?", session["user_id"])
         response = json.loads(raw_response)
         score = response["final_score"]
